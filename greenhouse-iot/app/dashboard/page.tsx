@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import {Suspense} from "react";
+import Temperature from "@/app/components/Temperature";
 export default function Dashboard() {
     const Loader = dynamic(() => import('../components/loading'));
     const ClientOnlyComponent = dynamic(() => import('../components/ClientOnlyComponent'), {
@@ -10,6 +11,7 @@ export default function Dashboard() {
         <div>
             <p>Hello, Dashboard!</p>
             <ClientOnlyComponent></ClientOnlyComponent>
+            <Temperature></Temperature>
         </div>
     );
 }
