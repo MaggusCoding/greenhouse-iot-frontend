@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getTemperatureData } from '../services/temperatureService';
 import { Temperature } from '../models/temperature';
-
+import formatFirestoreTimestamp from "@/app/services/formatDate";
 const TemperatureComponent = () => {
     const [temperatures, setTemperatures] = useState<Temperature[]>([]);
 
@@ -10,7 +10,6 @@ const TemperatureComponent = () => {
         const fetchData = async () => {
             const data = await getTemperatureData();
             setTemperatures(data);
-            console.log(temperatures)
         };
         fetchData();
     }, []);
@@ -19,7 +18,7 @@ const TemperatureComponent = () => {
         <div>
             {temperatures.map(temp => (
                 <div key={temp.id}>
-                    <p>Temperature: {temp.temperature} at {temp.id}</p>
+                    <p>Temperature: {temp.temperature} at {formatFirestoreTimestamp(temp.time)}</p>
                 </div>
             ))}
         </div>

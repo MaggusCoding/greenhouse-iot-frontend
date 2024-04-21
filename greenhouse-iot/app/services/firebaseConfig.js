@@ -10,7 +10,6 @@ const firebaseConfig = {
 };
 
 if (getApps().length === 0) {
-    console.log(firebaseConfig)
     initializeApp(firebaseConfig);
 }
 
